@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@variant dark (.dark &);
+
+@theme {
+  /* Brand: deep blue → cyan (matches logo) */
+  --color-primary: #2563eb;
+  --color-secondary: #22d3ee;
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-border: #e4e4e7;
+  
+  --animate-fade-in-down: fadeInDown 0.8s ease-out forwards;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-fade-in: fadeIn 0.4s ease-out forwards;
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+html,
+body {
+  @apply min-h-screen overflow-x-hidden bg-background antialiased text-zinc-900;
+}
+
+.dark body {
+  @apply bg-background text-neutral-50;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(37, 99, 235, 0.07), transparent 42%),
+    radial-gradient(circle at 85% 100%, rgba(34, 211, 238, 0.07), transparent 42%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(37, 99, 235, 0.14), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(34, 211, 238, 0.12), transparent 40%);
+}
+
+/* Base utility classes for repeating logic */
+@layer utilities {
+  .glass {
+    @apply rounded-2xl border border-zinc-200 bg-white/80 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-900/70;
+  }
+  .glass-nav {
+    @apply border-b border-zinc-200 bg-white/85 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/80;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+}
+
+.dark {
+  --color-background: #09090b;
+  --color-surface: #18181b;
+  --color-surface-border: #27272a;
+}
