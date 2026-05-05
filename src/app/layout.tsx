@@ -103,7 +103,7 @@ export default function RootLayout({
                 rel="noopener noreferrer"
                 className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
               >
-                Feedback
+                Contact
               </a>
             </div>
             <p>
