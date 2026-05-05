@@ -7,18 +7,18 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Learn how miniurl helps you shorten links, track clicks, and ship faster — with a modern UI built for performance and scale.',
+    'Miniurl provides enterprise-grade URL management and analytics. Empowering Fortune 500 companies and growing startups to scale their digital reach.',
   alternates: { canonical: '/about' },
   openGraph: {
     url: `${siteUrl}/about`,
     title: 'About Miniurl',
     description:
-      'Learn how miniurl helps you shorten links, track clicks, and ship faster — with a modern UI built for performance and scale.',
+      'Miniurl provides enterprise-grade URL management and analytics. Empowering Fortune 500 companies and growing startups to scale their digital reach.',
   },
   twitter: {
-    title: 'About miniurl',
+    title: 'About Miniurl',
     description:
-      'Learn how miniurl helps you shorten links, track clicks, and ship faster — with a modern UI built for performance and scale.',
+      'Miniurl provides enterprise-grade URL management and analytics. Empowering Fortune 500 companies and growing startups to scale their digital reach.',
   },
 };
 
@@ -27,9 +27,9 @@ const aboutJsonLd = {
   '@type': 'WebPage',
   '@id': `${siteUrl}/about#webpage`,
   url: `${siteUrl}/about`,
-  name: 'About miniurl',
+  name: 'About Miniurl',
   description:
-    'Learn how miniurl helps you shorten links, track clicks, and ship faster — with a modern UI built for performance and scale.',
+    'Miniurl provides enterprise-grade URL management and analytics. Empowering Fortune 500 companies and growing startups to scale their digital reach.',
   isPartOf: { '@id': `${siteUrl}/#website` },
   inLanguage: 'en-US',
 };
@@ -38,32 +38,49 @@ export default function About() {
   return (
     <>
       <JsonLd data={aboutJsonLd} />
-      <div className="glass max-w-3xl mx-auto p-8 md:p-12 animate-fade-in-up">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-8 text-gradient">
-        About miniurl
-      </h1>
-      
-      <div className="space-y-6 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
-        <p>
-          Welcome to miniurl! We understand that in the modern digital age, long and clunky URLs can ruin the user experience and break the aesthetic of your content. That is why we built this tool—to provide a lightning-fast, highly scalable, and beautifully designed solution for shortening links.
-        </p>
+      <div className="glass max-w-4xl mx-auto p-8 md:p-12 animate-fade-in-up">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gradient inline-block">
+            Powering the Modern Web
+          </h1>
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+            Miniurl is the enterprise standard for link management, routing billions of clicks globally with zero downtime.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <div className="space-y-6 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">Our Mission</h2>
+            <p>
+              Founded on the principle that digital infrastructure should be invisible yet incredibly powerful, Miniurl provides Fortune 500 companies, marketing agencies, and global enterprises with unparalleled link management capabilities.
+            </p>
+            <p>
+              We transform long, complex URLs into meaningful, trackable assets that drive engagement and provide deep, actionable analytics.
+            </p>
+          </div>
+          <div className="space-y-6 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">Global Scale</h2>
+            <p>
+              Operating on a highly distributed edge network, Miniurl guarantees sub-millisecond latency for link resolution anywhere in the world. 
+            </p>
+            <p>
+              Our infrastructure is engineered for redundancy and massive throughput, ensuring your critical marketing campaigns and operational links remain active 24/7/365.
+            </p>
+          </div>
+        </div>
 
-        <h2 className="mt-12 mb-4 text-2xl font-bold text-zinc-900 dark:text-white">Built for Scale</h2>
-        <p>
-          Whether you are an individual sharing a single link on social media or an enterprise generating thousands of dynamic URLs per second, miniurl is designed to handle it all. Under the hood, we use cutting-edge web technologies, including Next.js and Prisma, to ensure your links are created instantly and resolved even faster.
-        </p>
-
-        <h2 className="mt-12 mb-4 text-2xl font-bold text-zinc-900 dark:text-white">SEO & Aesthetics First</h2>
-        <p>
-          A good URL shortener should not only work—it should look good doing it. We have poured attention into creating a vibrant glassmorphic UI with optional light or dark themes, responsive on every device from ultra-wide monitors to the phone in your pocket. Furthermore, our semantic HTML and metadata structures support solid SEO so you can find us when you need us.
-        </p>
-
-        <h2 className="mt-12 mb-4 text-2xl font-bold text-zinc-900 dark:text-white">Open and Secure</h2>
-        <p>
-          We value your privacy and security. The links you shorten are stored securely in our database and redirected with permanent 301 redirects, ensuring that link equity is preserved and that users get exactly where they need to go.
-        </p>
+        <div className="border-t border-zinc-200 dark:border-zinc-800 pt-12">
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-6 text-center">Enterprise Security & Compliance</h2>
+          <div className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 text-center max-w-2xl mx-auto space-y-4">
+            <p>
+              Trust is the foundation of our business. We adhere to the strictest security standards in the industry, offering military-grade encryption, comprehensive access controls, and transparent audit logging.
+            </p>
+            <p>
+              When you build on Miniurl, you&apos;re building on a platform designed to meet the rigorous demands of modern regulatory environments.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
     </>
   );
 }

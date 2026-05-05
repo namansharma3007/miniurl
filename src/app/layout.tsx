@@ -6,6 +6,7 @@ import { authOptions } from '@/lib/auth';
 import SiteHeader from '@/components/SiteHeader';
 import { getSiteUrl } from '@/lib/site';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Link from 'next/link';
 
 
 const siteUrl = getSiteUrl();
@@ -88,6 +89,10 @@ export default async function RootLayout({
           </main>
 
           <footer className="mt-auto w-full border-t border-zinc-200 py-8 text-center text-sm text-zinc-500 dark:border-zinc-800">
+            <div className="flex justify-center space-x-6 mb-4">  
+              <Link href="/privacy" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Terms of Service</Link>
+            </div>
             <p>&copy; {new Date().getFullYear()} Miniurl. Enterprise Grade URL Management.</p>
           </footer>
         </Providers>
