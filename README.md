@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Miniurl - Professional URL Shortener
 
-## Getting Started
+Miniurl is a modern, fast, and scalable URL shortener built with Next.js, Prisma, PostgreSQL, and Redis. It features a responsive dashboard, Google OAuth authentication, and advanced link tracking.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Lightning Fast:** Built with Next.js App Router and optimized for performance.
+- **Secure Authentication:** Seamless Google OAuth integration via NextAuth.
+- **Link Tracking:** Asynchronous click tracking and link statistics.
+- **High Performance:** Redis caching layer for rapid link resolution.
+- **Modern UI/UX:** Responsive dashboard, dark mode support, and glassmorphism design powered by Tailwind CSS v4.
+- **SEO Optimized:** Enterprise-grade branding, semantic HTML, and optimal web vitals.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** [Next.js](https://nextjs.org/) (App Router, React 19)
+- **Database:** [PostgreSQL](https://www.postgresql.org/) with [Prisma ORM](https://www.prisma.io/)
+- **Caching:** [Redis](https://redis.io/) (via `ioredis`)
+- **Authentication:** [NextAuth.js](https://next-auth.js.org/) (Google Provider)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📋 Prerequisites
 
-## Learn More
+Before running the project locally, ensure you have the following installed:
 
-To learn more about Next.js, take a look at the following resources:
+- **Node.js** (v18 or higher)
+- **PostgreSQL** (local or hosted database)
+- **Redis** (local or hosted instance)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💻 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/namansharma3007/miniurl.git
+   cd miniurl
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Install dependencies:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables:**
+
+   Copy the sample environment file and update the values:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Update the `.env` file with your specific configuration:
+   - `DATABASE_URL`: Your PostgreSQL connection string.
+   - `NEXTAUTH_URL`: `http://localhost:3000` for local development.
+   - `NEXTAUTH_SECRET`: Generate a strong secret (e.g., using `openssl rand -base64 32`).
+   - `GOOGLE_CLIENT_ID` & `GOOGLE_CLIENT_SECRET`: Obtain from the Google Cloud Console.
+   - `REDIS_URL`: Your Redis connection string.
+
+4. **Initialize the Database:**
+
+   Run Prisma commands to generate the client and push the schema:
+
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+5. **Start the Development Server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser to interact with the application.
+
+## 📁 Project Structure
+
+- `src/app/`: Next.js App Router pages, layouts, and API routes.
+- `prisma/`: Database schema and configuration.
+- `public/`: Static assets and images.
+
+## 🚀 Deployment
+
+Miniurl is fully optimized for deployment on [Vercel](https://vercel.com). Make sure to configure all environment variables in your Vercel project settings prior to deployment.
