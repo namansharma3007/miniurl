@@ -31,14 +31,14 @@ export default function SiteHeader({ session }: { session: Session | null }) {
           >
             <Image
               src="/logo.png"
-              alt="miniurl"
+              alt="Miniurl"
               width={40}
               height={40}
               className="h-9 w-9 object-contain "
               priority
             />
             <span>
-              miniurl<span className="text-primary">.</span>
+              Miniurl<span className="text-primary">.</span>
             </span>
           </Link>
 

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "miniurl — Professional link management";
+export const alt = "Miniurl — Professional link management";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -36,7 +36,7 @@ export default function OpenGraphImage() {
               background: "linear-gradient(90deg, #1d4ed8, #22d3ee)",
             }}
           />
-          <div style={{ fontSize: 28, color: "#e2e8f0", letterSpacing: 0.5 }}>miniurl</div>
+          <div style={{ fontSize: 28, color: "#e2e8f0", letterSpacing: 0.5 }}>Miniurl</div>
         </div>
         <div
           style={{

@@ -5,19 +5,21 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import SiteHeader from '@/components/SiteHeader';
 import { getSiteUrl } from '@/lib/site';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'miniurl | Professional link management',
-    template: '%s | miniurl',
+    default: 'Miniurl | Professional link management',
+    template: '%s | Miniurl',
   },
   icons: { icon: "/logo.png" },
   description:
-    'Create short, trackable links in seconds. miniurl is a fast, secure URL shortener with click analytics — built for creators, teams, and production workflows.',
-  applicationName: 'miniurl',
+    'Create short, trackable links in seconds. Miniurl is a fast, secure URL shortener with click analytics — built for creators, teams, and production workflows.',
+  applicationName: 'Miniurl',
   keywords: [
     'URL shortener',
     'link shortener',
@@ -25,24 +27,24 @@ export const metadata: Metadata = {
     'link management',
     'click tracking',
     'UTM',
-    'miniurl',
+    'Miniurl',
   ],
-  authors: [{ name: 'miniurl' }],
-  creator: 'miniurl',
-  publisher: 'miniurl',
+  authors: [{ name: 'Miniurl' }],
+  creator: 'Miniurl',
+  publisher: 'Miniurl',
   category: 'technology',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_IN',
     url: siteUrl,
-    siteName: 'miniurl',
-    title: 'miniurl | Professional link management',
+    siteName: 'Miniurl',
+    title: 'Miniurl | Professional link management',
     description:
       'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI — built with Next.js.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'miniurl | Professional link management',
+    title: 'Miniurl | Professional link management',
     description:
       'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI.',
   },
@@ -86,10 +88,11 @@ export default async function RootLayout({
           </main>
 
           <footer className="mt-auto w-full border-t border-zinc-200 py-8 text-center text-sm text-zinc-500 dark:border-zinc-800">
-            <p>&copy; {new Date().getFullYear()} miniurl. Enterprise Grade URL Management.</p>
+            <p>&copy; {new Date().getFullYear()} Miniurl. Enterprise Grade URL Management.</p>
           </footer>
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-Z9BPC8EX39" />
     </html>
   );
 }

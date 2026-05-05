@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/about' },
   openGraph: {
     url: `${siteUrl}/about`,
-    title: 'About miniurl',
+    title: 'About Miniurl',
     description:
       'Learn how miniurl helps you shorten links, track clicks, and ship faster — with a modern UI built for performance and scale.',
   },

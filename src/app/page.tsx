@@ -6,13 +6,13 @@ import { getSiteUrl } from '@/lib/site';
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: { absolute: 'miniurl | Professional link management' },
+  title: { absolute: 'Miniurl | Professional link management' },
   description:
-    'Create short, trackable links in seconds. miniurl is a fast, secure URL shortener with click analytics — built for creators, teams, and production workflows.',
+    'Create short, trackable links in seconds. Miniurl is a fast, secure URL shortener with click analytics — built for creators, teams, and production workflows.',
   alternates: { canonical: '/' },
   openGraph: {
     url: siteUrl,
-    title: 'miniurl | Professional link management',
+    title: 'Miniurl | Professional link management',
     description:
       'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI — built with Next.js.',
   },
@@ -25,7 +25,7 @@ const homeJsonLd = {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
-      name: 'miniurl',
+      name: 'Miniurl',
       description:
         'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI.',
       inLanguage: 'en-US',
@@ -34,13 +34,13 @@ const homeJsonLd = {
     {
       '@type': 'Organization',
       '@id': `${siteUrl}/#organization`,
-      name: 'miniurl',
+      name: 'Miniurl',
       url: siteUrl,
     },
     {
       '@type': 'WebApplication',
       '@id': `${siteUrl}/#webapp`,
-      name: 'miniurl',
+      name: 'Miniurl',
       url: siteUrl,
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Any',
@@ -64,7 +64,7 @@ export default function Home() {
           <span className="text-gradient">Expand Your Reach.</span>
         </h1>
         <p className="mx-auto max-w-xl text-lg leading-relaxed text-zinc-600 md:text-xl dark:text-zinc-400">
-          miniurl is a lightning-fast, production-grade link management tool. 
+          Miniurl is a lightning-fast, production-grade link management tool. 
           Create concise, shareable links in seconds with our beautiful, intuitive interface.
         </p>
       </div>
