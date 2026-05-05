@@ -45,7 +45,7 @@ export default function About() {
           </h1>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Miniurl is the enterprise standard for link management, routing
-            billions of clicks globally with zero downtime.
+            1,000+ of clicks globally with zero downtime.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export default function About() {
             <p>
               Trust is the foundation of our business. We adhere to the
               strictest security standards in the industry, offering
-              military-grade encryption, comprehensive access controls, and
+              high-grade encryption, comprehensive access controls, and
               transparent audit logging.
             </p>
             <p>
