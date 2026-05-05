@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import crypto from "crypto";
+import { customAlphabet } from "nanoid";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redis } from "@/lib/redis";
@@ -8,6 +8,12 @@ import dns from "dns";
 import { promisify } from "util";
 
 const lookup = promisify(dns.lookup);
+
+// Use nanoid with a base62 alphabet for a more collision-resistant algorithm
+const generateShortId = customAlphabet(
+  "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+  7
+);
 
 export async function POST(req: Request) {
   try {
@@ -84,12 +90,12 @@ export async function POST(req: Request) {
       );
     }
 
-    let shortId = crypto.randomBytes(4).toString("base64url").slice(0, 6);
+    let shortId = generateShortId();
 
-    // Collision retry mechanism
+    // Collision retry mechanism (fallback)
     let exists = await prisma.url.findUnique({ where: { shortId } });
     while (exists) {
-      shortId = crypto.randomBytes(4).toString("base64url").slice(0, 6);
+      shortId = generateShortId();
       exists = await prisma.url.findUnique({ where: { shortId } });
     }
 
