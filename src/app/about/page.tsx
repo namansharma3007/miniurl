@@ -45,7 +45,7 @@ export default function About() {
           </h1>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Miniurl is the enterprise standard for link management, routing
-            1,000+ of clicks globally with zero downtime.
+            1,000+ clicks globally with zero downtime.
           </p>
         </div>
 
