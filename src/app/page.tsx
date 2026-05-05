@@ -1,54 +1,54 @@
-import type { Metadata } from 'next';
-import UrlShortener from '@/components/UrlShortener';
-import { JsonLd } from '@/components/JsonLd';
-import { getSiteUrl } from '@/lib/site';
+import type { Metadata } from "next";
+import UrlShortener from "@/components/UrlShortener";
+import { JsonLd } from "@/components/JsonLd";
+import { getSiteUrl } from "@/lib/site";
 
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: { absolute: 'Miniurl | Professional link management' },
+  title: { absolute: "Miniurl | Professional link management" },
   description:
-    'Create short, trackable links in seconds. Miniurl is a fast, secure URL shortener with click analytics — built for creators, teams, and production workflows.',
-  alternates: { canonical: '/' },
+    "Create short, trackable links in seconds. Miniurl is a fast, secure URL shortener with click analytics — built for creators, teams, and production workflows.",
+  alternates: { canonical: "/" },
   openGraph: {
     url: siteUrl,
-    title: 'Professional link management | Miniurl',
+    title: "Professional link management | Miniurl",
     description:
-      'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI for easier navigation.',
+      "Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI for easier navigation.",
   },
 };
 
 const homeJsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: 'Miniurl',
+      name: "Miniurl",
       description:
-        'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI.',
-      inLanguage: 'en-US',
-      publisher: { '@id': `${siteUrl}/#organization` },
+        "Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI.",
+      inLanguage: "en-US",
+      publisher: { "@id": `${siteUrl}/#organization` },
     },
     {
-      '@type': 'Organization',
-      '@id': `${siteUrl}/#organization`,
-      name: 'Miniurl',
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Miniurl",
       url: siteUrl,
     },
     {
-      '@type': 'WebApplication',
-      '@id': `${siteUrl}/#webapp`,
-      name: 'Miniurl',
+      "@type": "WebApplication",
+      "@id": `${siteUrl}/#webapp`,
+      name: "Miniurl",
       url: siteUrl,
-      applicationCategory: 'UtilitiesApplication',
-      operatingSystem: 'Any',
-      browserRequirements: 'Requires JavaScript. Requires HTML5.',
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Any",
+      browserRequirements: "Requires JavaScript. Requires HTML5.",
       offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
       },
     },
   ],
@@ -64,8 +64,9 @@ export default function Home() {
           <span className="text-gradient">Expand Your Reach.</span>
         </h1>
         <p className="mx-auto max-w-xl text-lg leading-relaxed text-zinc-600 md:text-xl dark:text-zinc-400">
-          Miniurl is a lightning-fast, production-grade link management tool. 
-          Create concise, shareable links in seconds with our beautiful, intuitive interface.
+          Miniurl is a lightning-fast, production-grade link management tool.
+          Create concise, shareable links in seconds with our beautiful,
+          intuitive interface.
         </p>
       </div>
 
