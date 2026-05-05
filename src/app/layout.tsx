@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: 'Miniurl',
     title: 'Miniurl | Professional link management',
     description:
-      'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI — built with Next.js.',
+      'Create short, trackable links in seconds. Fast redirects, click analytics, and a polished UI for easier navigation.',
   },
   twitter: {
     card: 'summary_large_image',

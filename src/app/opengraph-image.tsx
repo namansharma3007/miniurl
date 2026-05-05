@@ -58,7 +58,7 @@ export default function OpenGraphImage() {
             lineHeight: 1.35,
           }}
         >
-          Fast, secure URL shortener with analytics — built with Next.js.
+          Fast, secure URL shortener with analytics with easier navigation.
         </div>
       </div>
     ),
