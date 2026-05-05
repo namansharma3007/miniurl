@@ -4,6 +4,10 @@ import crypto from "crypto";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redis } from "@/lib/redis";
+import dns from "dns";
+import { promisify } from "util";
+
+const lookup = promisify(dns.lookup);
 
 export async function POST(req: Request) {
   try {
@@ -22,11 +26,28 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "URL is required" }, { status: 400 });
     }
 
+    let parsedUrl;
     try {
-      new URL(url);
+      parsedUrl = new URL(url);
     } catch {
       return NextResponse.json(
-        { error: "Invalid URL provided" },
+        { error: "Invalid URL format" },
+        { status: 400 },
+      );
+    }
+
+    if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
+      return NextResponse.json(
+        { error: "Invalid URL protocol. Only HTTP and HTTPS are supported." },
+        { status: 400 },
+      );
+    }
+
+    try {
+      await lookup(parsedUrl.hostname);
+    } catch (error) {
+      return NextResponse.json(
+        { error: "URL domain could not be resolved. Please enter a valid, reachable URL." },
         { status: 400 },
       );
     }
