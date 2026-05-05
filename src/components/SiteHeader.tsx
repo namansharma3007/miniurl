@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Loader2 } from "lucide-react";
 import AuthButtons from "@/components/AuthButtons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -12,7 +12,7 @@ const navLinkClass =
   "text-sm font-medium text-zinc-600 transition-colors hover:text-blue-700 dark:text-zinc-400 dark:hover:text-cyan-300";
 
 export default function SiteHeader() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,13 @@ export default function SiteHeader() {
 
         <div className="hidden shrink-0 items-center gap-3 md:flex md:flex-row md:justify-end">
           <ThemeToggle />
-          <AuthButtons session={session} />
+          {status === "loading" ? (
+            <div className="flex h-10 w-[170px] items-center justify-center">
+              <Loader2 className="h-5 w-5 animate-spin text-blue-600 dark:text-cyan-400" />
+            </div>
+          ) : (
+            <AuthButtons session={session} />
+          )}
         </div>
 
         <div
@@ -107,7 +113,13 @@ export default function SiteHeader() {
               About
             </Link>
             <div className="mt-3 border-t border-zinc-200 pt-4 dark:border-zinc-700">
-              <AuthButtons session={session} />
+              {status === "loading" ? (
+                <div className="flex items-center justify-center py-2">
+                  <Loader2 className="h-5 w-5 animate-spin text-blue-600 dark:text-cyan-400" />
+                </div>
+              ) : (
+                <AuthButtons session={session} />
+              )}
             </div>
           </div>
         </div>
