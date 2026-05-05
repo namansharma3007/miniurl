@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import type { Session } from "next-auth";
+import { useSession } from "next-auth/react";
 import { Menu, X } from "lucide-react";
 import AuthButtons from "@/components/AuthButtons";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -11,7 +11,8 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const navLinkClass =
   "text-sm font-medium text-zinc-600 transition-colors hover:text-blue-700 dark:text-zinc-400 dark:hover:text-cyan-300";
 
-export default function SiteHeader({ session }: { session: Session | null }) {
+export default function SiteHeader() {
+  const { data: session } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -57,15 +58,15 @@ export default function SiteHeader({ session }: { session: Session | null }) {
         </div>
 
         <nav className="hidden items-center gap-6 md:flex md:flex-row">
-          <Link href="/" className={navLinkClass}>
+          <Link href="/" prefetch={true} className={navLinkClass}>
             Home
           </Link>
           {session && (
-            <Link href="/dashboard" className={navLinkClass}>
+            <Link href="/dashboard" prefetch={true} className={navLinkClass}>
               Dashboard
             </Link>
           )}
-          <Link href="/about" className={navLinkClass}>
+          <Link href="/about" prefetch={true} className={navLinkClass}>
             About
           </Link>
         </nav>
@@ -81,6 +82,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
           <div className="flex flex-col gap-1 rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-lg backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-950/95">
             <Link
               href="/"
+              prefetch={true}
               className="rounded-lg px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/80"
               onClick={() => setMobileOpen(false)}
             >
@@ -89,6 +91,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
             {session && (
               <Link
                 href="/dashboard"
+                prefetch={true}
                 className="rounded-lg px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/80"
                 onClick={() => setMobileOpen(false)}
               >
@@ -97,6 +100,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
             )}
             <Link
               href="/about"
+              prefetch={true}
               className="rounded-lg px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/80"
               onClick={() => setMobileOpen(false)}
             >

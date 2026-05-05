@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Providers } from '@/components/Providers';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
 import SiteHeader from '@/components/SiteHeader';
 import { getSiteUrl } from '@/lib/site';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -71,18 +69,16 @@ export const viewport: Viewport = {
   themeColor: '#2563eb',
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <Providers>
-          <SiteHeader session={session} />
+          <SiteHeader />
           
           <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-12 md:py-20 flex flex-col">
             {children}
