@@ -22,12 +22,7 @@ export default function PrivacyPolicy() {
       </h1>
       <div className="space-y-6 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
         <p className="text-sm text-zinc-500">
-          Last updated:{" "}
-          {new Date().toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}
+          Last updated: May 5, 2026
         </p>
 
         <h2 className="mt-8 mb-4 text-2xl font-bold text-zinc-900 dark:text-white">
