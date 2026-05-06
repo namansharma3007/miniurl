@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { prisma } from "@/lib/prisma";
 import DashboardClient from "@/components/DashboardClient";
 
 export const metadata: Metadata = {
@@ -34,12 +33,6 @@ export default async function Dashboard() {
     hdrs.get("host") ||
     "";
 
-  // Fetch URLs for this user
-  const urls = await prisma.url.findMany({
-    where: { userId: session.user.id },
-    orderBy: { createdAt: "desc" },
-  });
-
   return (
     <div className="w-full">
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -47,11 +40,11 @@ export default async function Dashboard() {
           Your Links
         </h1>
         <p className="inline-flex rounded-full border border-zinc-200 bg-white px-4 py-2 font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-          {urls.length} <span className="opacity-50">/</span> 10 Minified
+          Manage your links below
         </p>
       </div>
 
-      <DashboardClient initialUrls={urls} siteHost={siteHost} />
+      <DashboardClient siteHost={siteHost} />
     </div>
   );
 }

@@ -1,19 +1,38 @@
 "use client";
 
 import type { Url } from "@prisma/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function DashboardClient({
-  initialUrls,
   siteHost,
 }: {
-  initialUrls: Url[];
   siteHost: string;
 }) {
-  const [urls, setUrls] = useState(initialUrls);
+  const [urls, setUrls] = useState<Url[]>([]);
   const [loading, setLoading] = useState<string | null>(null);
+  const [isFetching, setIsFetching] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchUrls = async () => {
+      try {
+        const res = await fetch("/api/urls");
+        if (res.ok) {
+          const data = await res.json();
+          setUrls(data);
+        } else {
+          console.error("Failed to fetch URLs");
+        }
+      } catch (error) {
+        console.error("Error fetching URLs:", error);
+      } finally {
+        setIsFetching(false);
+      }
+    };
+
+    fetchUrls();
+  }, []);
 
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this link?")) return;
@@ -40,6 +59,14 @@ export default function DashboardClient({
     navigator.clipboard.writeText(fullUrl);
     alert("Copied to clipboard!");
   };
+
+  if (isFetching) {
+    return (
+      <div className="glass p-12 text-center text-zinc-500 dark:text-zinc-400">
+        <p>Loading your minified URLs...</p>
+      </div>
+    );
+  }
 
   if (urls.length === 0) {
     return (
