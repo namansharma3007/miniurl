@@ -14,5 +14,5 @@ export function getSiteUrl(): string {
     return host.startsWith("http") ? host : `https://${host}`;
   }
 
-  return process.env.NEXTAUTH_URL || "http://localhost:3001";
+  return process.env.NODE_ENV === "production" ? process.env.NEXTAUTH_URL || "" : "http://localhost:3000";
 }
