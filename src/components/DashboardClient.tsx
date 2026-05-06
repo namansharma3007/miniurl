@@ -3,23 +3,27 @@
 import type { Url } from "@prisma/client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { cachedUrls, setCachedUrls } from "@/lib/dashboardCache";
 
 export default function DashboardClient({
   siteHost,
 }: {
   siteHost: string;
 }) {
-  const [urls, setUrls] = useState<Url[]>([]);
+  const [urls, setUrls] = useState<Url[]>(cachedUrls || []);
   const [loading, setLoading] = useState<string | null>(null);
-  const [isFetching, setIsFetching] = useState(true);
+  const [isFetching, setIsFetching] = useState(!cachedUrls);
   const router = useRouter();
 
   useEffect(() => {
+    if (cachedUrls) return;
+
     const fetchUrls = async () => {
       try {
         const res = await fetch("/api/urls");
         if (res.ok) {
           const data = await res.json();
+          setCachedUrls(data);
           setUrls(data);
         } else {
           console.error("Failed to fetch URLs");
@@ -41,7 +45,11 @@ export default function DashboardClient({
     try {
       const res = await fetch(`/api/urls/${id}`, { method: "DELETE" });
       if (res.ok) {
-        setUrls((prev) => prev.filter((u) => u.id !== id));
+        setUrls((prev) => {
+          const newUrls = prev.filter((u) => u.id !== id);
+          setCachedUrls(newUrls);
+          return newUrls;
+        });
         router.refresh();
       } else {
         const data = await res.json();
@@ -60,24 +68,27 @@ export default function DashboardClient({
     alert("Copied to clipboard!");
   };
 
-  if (isFetching) {
-    return (
-      <div className="glass p-12 text-center text-zinc-500 dark:text-zinc-400">
-        <p>Loading your minified URLs...</p>
-      </div>
-    );
-  }
-
-  if (urls.length === 0) {
-    return (
-      <div className="glass p-12 text-center text-zinc-500 dark:text-zinc-400">
-        <p>You have not minified any URLs yet.</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col gap-4">
+    <div className="w-full">
+      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Your Links
+        </h1>
+        <p className="inline-flex rounded-full border border-zinc-200 bg-white px-4 py-2 font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+          {isFetching ? "Loading..." : `${urls.length} Active Link${urls.length === 1 ? "" : "s"} / 10`}
+        </p>
+      </div>
+
+      {isFetching ? (
+        <div className="glass p-12 text-center text-zinc-500 dark:text-zinc-400">
+          <p>Loading your minified URLs...</p>
+        </div>
+      ) : urls.length === 0 ? (
+        <div className="glass p-12 text-center text-zinc-500 dark:text-zinc-400">
+          <p>You have not minified any URLs yet.</p>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-4">
       {urls.map((url) => (
         <div
           key={url.id}
@@ -142,6 +153,8 @@ export default function DashboardClient({
           </div>
         </div>
       ))}
+        </div>
+      )}
     </div>
   );
 }

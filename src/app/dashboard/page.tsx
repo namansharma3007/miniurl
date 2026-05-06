@@ -33,18 +33,5 @@ export default async function Dashboard() {
     hdrs.get("host") ||
     "";
 
-  return (
-    <div className="w-full">
-      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Your Links
-        </h1>
-        <p className="inline-flex rounded-full border border-zinc-200 bg-white px-4 py-2 font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-          Manage your links below
-        </p>
-      </div>
-
-      <DashboardClient siteHost={siteHost} />
-    </div>
-  );
+  return <DashboardClient siteHost={siteHost} />;
 }

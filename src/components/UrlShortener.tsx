@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { clearDashboardCache } from "@/lib/dashboardCache";
 
 export default function UrlShortener() {
   const { data: session } = useSession();
@@ -44,6 +45,7 @@ export default function UrlShortener() {
 
       setShortUrl(`${window.location.origin}/${data.shortId}`);
       setUrl("");
+      clearDashboardCache();
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
